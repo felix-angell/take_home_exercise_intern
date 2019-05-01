@@ -18,7 +18,8 @@ We recommend spending no more than 3 hours completing this exercise.
 
 ### Submitting your work:
 
-To submit, please fork this repository and create a pull request on that fork. Please then reply to the email thread with a link to the pull request. There is no deadline for submission but keep in mind that we will review the PRs in the order they come in.
+To submit, please fork this repository and create a pull request on that fork. Please then remail the link to the pull request to 
+DL-eBay-Shutl-Intern-Hiring@ebay.com. There is no deadline for submission but keep in mind that we will review the PRs in the order they come in.
 
 ## Completed Feature
 
