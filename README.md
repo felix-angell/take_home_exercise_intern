@@ -4,16 +4,21 @@ For our tech test, we'd like you to take a stripped-down version of our quoting 
 
 Throughout the test we're looking for great coding style, driving your code through tests (and refactoring) and at all times doing the bare minimum possible to get the job done. If you don't like the code or tests that are there already, feel free to refactor as you add features.
 
-Please take your time and make sure that the features you complete are done to a standard that you're happy with. Please complete the features in order.
+Please ensure that the features you complete are done to a standard that you're happy with, taking into account the time guideline below. Please complete the features in order.
 
 Read this document thoroughly before starting your work. You are welcome to contact us if you have any question.
 
+Please ensure that you include a readme file with any commands/thoughts/assumptions or anything else you would like us to know about your solution.
+
 Good luck! :)
 
+### Time guideline:
+
+We recommend spending no more than 3 hours completing this exercise.
 
 ### Submitting your work:
 
-Submit your work as a pull request to this repository. You should be able to complete this in a day but you're free to come back to us in 3-5 days.
+To submit, please fork this repository and create a pull request on that fork. Please then reply to the email thread with a link to the pull request. There is no deadline for submission but keep in mind that we will review the PRs in the order they come in.
 
 ## Completed Feature
 
@@ -77,47 +82,18 @@ Response:
 }
 ```
 
-### 2) Variable prices by carrier
+### 2) Build an interface for your app!
 
-Now we need the list of prices per carrier for the given `pickup_postcode`, `delivery_postcode` and `vehicle`.
-
-Use the JSON file in the `src/data` folder to fetch the carrier data and calculate the price.
-Bear in mind the carrier service should support the vehicle type. When calculating the price, add the service markup as well as the vehicle markup you have implemented in the earlier exercise to the carrier base price.
-
-The `price_list` array needs to contain JSON objects sorted by `price`.
-
-Example request:
-```
-{
-  "pickup_postcode":   "SW1A1AA",
-  "delivery_postcode": "EC2A3LT",
-  "vehicle": "small_van"
-}
-```
-Example response:
-```
-{
-  "pickup_postcode":   "SW1A1AA",
-  "delivery_postcode": "EC2A3LT"
-  "vehicle": "small_van"
-  "price_list": [
-    {"service": "RoyalPackages", "price": 300, "delivery_time": 5}
-    {"service": "Hercules", "price": 500, "delivery_time": 2},
-  ]
-}
-```
-
-### 3) Let's build a webpage!
-
-Build a webpage that makes the above calls.
+Build a webpage that makes the above call.
 
 It should contain a form with the following fields:
 `pickup_postcode`, `delivery_postcode` and `vehicle`.
 
-Under the form, based on the response, list the services with the following info:
-`service`, `price`, `delivery_time`
+Under the form, based on the response, list the price in the following format:
+`A delivery from <pickup_postcode> to <delivery_postcode> using a <vehicle> will cost you £<price>.`
+Substitute the variables in the <> with the appropriate values.
+
 While the page is waiting for the response, an appropriate message should be displayed.
-If there were no services returned, an appropriate message should be displayed.
 
 **Bonus**:
 - Make sure that the page displays well both on smaller and larger screens, ie that is `responsive`.
