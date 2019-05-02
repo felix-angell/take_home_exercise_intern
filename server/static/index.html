@@ -1,0 +1,71 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <title>Delivery</title>
+        <link rel="stylesheet" href="index.css" type="text/css"/>
+        <meta charset="utf8">
+    </head>
+
+    <body>
+        <main class="container">
+            <h1>Delivery Calculator</h1>
+            <div id="response">
+                <h2 id="response-field"></h2>
+            </div>
+            
+            <form id="myForm" method="POST">
+                <label>Pickup Postcode</label>
+                <input class='pickupPostcode' required type="text" minlength="7" maxlength="8" placeholder="bn1 4al" />
+
+                <label>Delivery Postcode</label>
+                <input class='deliveryPostcode' required type="text" minlength="7" maxlength="8" placeholder="tn23 7xa" />
+                
+                <label>Transportation Mode</label>
+                <select class='vehicleSelection' required name="vehicle">
+                    <option value="bicycle">Bicycle</option>
+                    <option value="motorbike">Motorbike</option>
+                    <option value="parcel_car">Car</option>
+                    <option value="small_van">Small Van</option>
+                    <option value="large_van">Large Van</option>
+                </select>
+
+                <input type="submit" value="Calculate" />
+            </form>
+        </main>
+    </body>
+
+    <script>
+        const myForm = document.getElementById('myForm');
+        myForm.onsubmit = (e) => {
+            e.preventDefault();
+
+            const responseField = document.getElementById('response-field');
+            responseField.innerText = 'Loading...';
+
+            const data = {
+                pickupPostcode: myForm.querySelector('.pickupPostcode').value,
+                deliveryPostcode: myForm.querySelector('.deliveryPostcode').value,
+                vehicle: myForm.querySelector('.vehicleSelection').value,
+            };
+            console.log('sending', data);
+
+            const fetchReq = fetch(
+                'http://localhost:8080/quote',
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                }
+            );
+            Promise.resolve(fetchReq).then((succ) => {
+                Promise.resolve(succ.json()).then((obj) => {
+                    responseField.innerText = `Cost to send is £${obj.price}`;
+                });
+            }, (fail) => {
+                responseField.innerText = 'Failed! Is the server running?';
+            });
+        };
+    </script>
+</html>

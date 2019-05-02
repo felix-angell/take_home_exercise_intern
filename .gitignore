@@ -1,3 +1,10 @@
+bin/
+.classpath
+.project
+.DS_Store
+.settings/
+.vscode/
+server/server
 .gradle
 .idea
 build
@@ -10,3 +17,4 @@ build
 *.war
 *.ear
 hs_err_pid*
+/bin/
